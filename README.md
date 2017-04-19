@@ -28,6 +28,11 @@ There are blog posts on how to setup [client](https://github.com/schul-cloud/sch
 2. run `mongod`
 2. run `npm start`
 
+## Run with docker
+
+1. Go into project folder
+2. run `docker-compose up`
+
 ## How to name your branch
 
 1. Take the last part of the url of your Trello ticket (e.g. "8-setup-feather-js")
