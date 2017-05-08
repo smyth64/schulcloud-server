@@ -198,6 +198,28 @@ class AWSS3Strategy extends AbstractFileStorageStrategy {
 			});
 	}
 
+	moveFile(userId, path, destination) {
+        if (!userId || !path || !destination) return Promise.reject(new errors.BadRequest('Missing parameters'));
+        return (checkPermissions(userId, path) && checkPermissions(userId, destination))
+			.then(res => UserModel.findById(userId).exec())
+            .then(result => {
+                if (!result || !result.schoolId) return Promise.reject(errors.NotFound("User not found"));
+                const awsObject = createAWSObject(result.schoolId);
+                const params = {
+                    Bucket: awsObject.bucket,
+                    Move: {
+                        Objects: [
+                            {
+                                Key: removeLeadingSlash(path)
+                            }
+                        ],
+                        Quiet: true
+                    }
+                };
+                return promisify(awsObject.s3.deleteObjects, awsObject.s3)(params);
+            });
+	}
+
 	deleteFile(userId, path) {
 		if (!userId || !path) return Promise.reject(new errors.BadRequest('Missing parameters'));
 		return checkPermissions(userId, path)
@@ -263,7 +285,7 @@ class AWSS3Strategy extends AbstractFileStorageStrategy {
 					if (!result || !result.schoolId) return Promise.reject(errors.NotFound("User not found"));
 
 					const awsObject = createAWSObject(result.schoolId);
-					var fileStream = fs.createReadStream(pathUtil.join(__dirname, '..', 'resources', '.scfake'));
+                    var fileStream = fs.createReadStream(pathUtil.join(__dirname, '..', 'resources', '.scfake')); //todo: resolve windows file path
 					let params = {
 						Bucket: awsObject.bucket,
 						Key: `${path}/.scfake`,

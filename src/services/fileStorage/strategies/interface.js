@@ -13,6 +13,10 @@ class AbstractFileStorageStrategy {
 		throw new TypeError("getFiles method has to be implemented.");
 	}
 
+	moveFile() {
+        throw new TypeError("moveFile method has to be implemented.");
+    }
+
 	deleteFile() {
 		throw new TypeError("deleteFile method has to be implemented.");
 	}
