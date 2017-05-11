@@ -76,7 +76,7 @@ class FileStorageService {
 	find({query, payload}) {
 		return createCorrectStrategy(payload.fileStorageType).getFiles(payload.userId, query.path);
 	}
-	patch(id, data, params) {
+	patch(id, params) {
 		return createCorrectStrategy(params.payload.fileStorageType).moveFile(params.payload.userId, params.query.path, params.query.destination);
 	}
 	/**

@@ -207,11 +207,14 @@ class AWSS3Strategy extends AbstractFileStorageStrategy {
                 const awsObject = createAWSObject(result.schoolId);
                 const params = {
                     Bucket: awsObject.bucket,
-                    Key: path,
-					CopySource: path+destination
+                    CopySource: path,
+					Key: destination
 				};
                 return promisify(awsObject.s3.copyObject, awsObject.s3)(params);
-            }).then(() =>  {deleteFile(userId, path);});
+            })
+			.then( () =>  {
+				this.deleteFile(userId, path);
+        	})
 	}
 
 	deleteFile(userId, path) {
