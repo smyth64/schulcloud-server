@@ -150,7 +150,7 @@ class AWSS3Strategy extends AbstractFileStorageStrategy {
 
 	moveFile(userId, path, destination) {
         if (!userId || !path || !destination) return Promise.reject(new errors.BadRequest('Missing parameters'));
-        return (checkPermissions(userId, path) && checkPermissions(userId, destination))
+        return filePermissionHelper.checkPermissions(userId, path, ['can-write']) && filePermissionHelper.checkPermissions(userId, destination, ['can-write'])
 			.then(res => UserModel.findById(userId).exec())
             .then(result => {
                 if (!result || !result.schoolId) return Promise.reject(errors.NotFound("User not found"));
