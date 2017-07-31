@@ -50,6 +50,18 @@ class FileStorageService {
 					}
 				],
 				summary: 'remove a file'
+			},
+			patch: {
+                parameters: [
+                    {
+                        description: 'The path where the file can be found',
+                        required: true,
+                        name: 'path',
+						destination: 'path',
+                        type: 'string'
+                    }
+                ],
+                summary: 'move a file'
 			}
 		};
 	}
