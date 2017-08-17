@@ -167,15 +167,22 @@ class DirectoryService {
 		let path = data.path;
 		let fileName = pathUtil.basename(path);
 		let dirName = pathUtil.dirname(path) + "/";
-
-		return filePermissionHelper.checkPermissions(userId, path)
-			.then(_ => {
-				// create db entry for new directory
-				return DirectoryModel.create({
-					key: path,
-					name: fileName,
-					path: dirName
-				});
+		return DirectoryModel.findOne({key: path}).exec()
+			.then(directory => {
+			if (directory == null){
+				return filePermissionHelper.checkPermissions(userId, path)
+					.then(_ => {
+						// create db entry for new directory
+						return DirectoryModel.create({
+							key: path,
+							name: fileName,
+							path: dirName,
+							label: data.label || ''
+						});
+					});
+			}else{
+				return directory;
+			}
 			});
 	}
 

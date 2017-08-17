@@ -41,11 +41,13 @@ const fileSchema = new Schema({
  * Information: key could be redundant because it is just path + name, but it is easier to handle different server calls
  * @param path {String} - the path in which the file exists users/0000d231816abba584714c9e/
  * @param name {String} - the name of the file, e.g. folder
+ * @param label {String} - the name of the folder to be displayed in case name is non-human-readable format, e.g. folder
  */
 const directorySchema = new Schema({
 	key: {type: String, required: true, unique: true},
 	path: {type: String},
 	name: {type: String},
+	label: {type: String},
 	createdAt: {type: Date, 'default': Date.now},
 	updatedAt: {type: Date, 'default': Date.now}
 });
