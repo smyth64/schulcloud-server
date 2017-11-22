@@ -17,4 +17,4 @@ USER app
 WORKDIR /app
 
 EXPOSE 3030
-CMD ["npm", "start"]
+CMD ["npm", "run", "startd"]
