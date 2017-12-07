@@ -21,7 +21,7 @@ const removeFromSubmission = hook => {
 
 exports.before = {
   all: [auth.hooks.authenticate('jwt')],
-  find: [globalHooks.mapPaginationQuery.bind(this)],
+  find: [],
   get: [],
   create: [],
   update: [],
