@@ -66,11 +66,12 @@
     "phantomjs-prebuilt": "^2.1.14",
     "pretty-error": "^2.0.3",
     "querystring": "^0.2.0",
-    "randexp": "^0.4.4",
+	"randexp": "^0.4.4",
+	"redis": "^2.8.0",
     "request-promise-native": "^1.0.3",
     "serve-favicon": "^2.3.2",
     "strip-js": "^1.0.6",
-    "uuid": "^3.1.0",
+	"uuid": "^3.1.0",
     "winston": "^2.3.0"
   },
   "devDependencies": {
