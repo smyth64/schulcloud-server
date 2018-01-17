@@ -1,4 +1,4 @@
-const request = require("request-promise-native");
+const rp = require("request-promise-native");
 
 class LearningLockerStore {
 	constructor(opts) {
@@ -11,17 +11,26 @@ class LearningLockerStore {
 	}
 
 	create(data, params) {
-		return new Promise((resolve, reject) => {
-			const feedback = this.app.service("feedback");
-			const feedback_key = data.feedback_key;
+		// TODO: POST /statements to learning locker
+		const baseUrl = 'http://fb10-bp2017cm2.hpi.uni-potsdam.de/data/xAPI/';
+		const authorization = 'MTk5YmMxMTU1NDgxMGZlNTg0YmNkYTQyN2JjNDkwYjVmOTIzNzk2Nzo2Mzc0MGJmZmYzMzRkNmU3MDE3OTE2ZTQ3YTBlMTNmZWU1MjI4OTlj';
 
-			feedback.get(feedback_key)
-				.then(user => {
-					const xapi = data.xapi;
-
-
-				});
+		const options = {
+			method: 'POST',
+			uri: baseUrl + 'statements',
+			headers: {
+				'Authorization': authorization,
+				'X-Experience-API-Version': '1.0.3'
+			},
+			body: data,
+			json: true
+		};
+		return rq(options).then(result => {
+			return result
+		}).catch(err => {
+			return "Error"
 		});
+
 	}
 
 	setup(app, path) {
