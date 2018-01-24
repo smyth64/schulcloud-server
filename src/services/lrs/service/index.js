@@ -7,13 +7,14 @@ class LearningLockerStore {
 	}
 
 	get(params) {
-		//TODO
+		// TODO
+		return Promise.resolve([]);
 	}
 
 	create(data, params) {
 		// TODO: POST /statements to learning locker
-		const baseUrl = 'http://fb10-bp2017cm2.hpi.uni-potsdam.de/data/xAPI/';
-		const authorization = 'MTk5YmMxMTU1NDgxMGZlNTg0YmNkYTQyN2JjNDkwYjVmOTIzNzk2Nzo2Mzc0MGJmZmYzMzRkNmU3MDE3OTE2ZTQ3YTBlMTNmZWU1MjI4OTlj';
+		const baseUrl = 'http://172.20.8.5/data/xAPI/';
+		const authorization = 'OTJhMDMxYzc4ZDkzMjFmYmEyNDM4Y2QwMjU5NzgzYTU5MDQ0MjU2NzoxZjZhOWNmNTQyNWZjMGQzYjg1YTZjYmZmY2M1OTM1Nzk2Mzg5N2Nl';
 
 		const options = {
 			method: 'POST',
@@ -22,13 +23,25 @@ class LearningLockerStore {
 				'Authorization': authorization,
 				'X-Experience-API-Version': '1.0.3'
 			},
-			body: data,
+			body: [
+				{
+					"actor": { "mbox": "mailto:test2@example.org" },
+					"verb": { "id": "http://www.example.org/verb" },
+					"object": { "id": "http://www.example.org/activity"}
+				},
+				{
+					"actor": { "mbox": "mailto:test2@example.org"},
+					"verb": {"id": "http://adlnet.gov/expapi/verbs/completed"},
+					"object": {"objectType": "Activity", "id": "http://www.example.com/activities/1"}
+				}
+			],
 			json: true
 		};
-		return rq(options).then(result => {
-			return result
+		console.log(options);
+		return rp(options).then(result => {
+			return Promise.resolve(result);
 		}).catch(err => {
-			return "Error"
+			return Promise.resolve(err);
 		});
 
 	}
