@@ -12,9 +12,7 @@ class LearningLockerStore {
 
 	create(data, params) {
 		return new Promise((resolve, reject) => {
-
 			const feedback = this.app.service("feedback");
-
 			const feedback_key = data.feedback_key;
 
 			feedback.get(feedback_key)
