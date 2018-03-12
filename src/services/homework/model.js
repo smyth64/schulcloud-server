@@ -19,9 +19,9 @@ const homeworkModel = mongoose.model('homework', new Schema({
     teacherId: {type: Schema.Types.ObjectId, required: true, ref: 'user'},
     courseId: {type: Schema.Types.ObjectId, 'default': null, ref: 'course'},
     lessonId: {type: Schema.Types.ObjectId, 'default': null, ref: 'lesson'},
-    private: {type: Boolean},
-    publicSubmissions: {type: Boolean},
-    teamSubmissions: {type: Boolean},
+    private: {type: Boolean, 'default': false},
+    publicSubmissions: {type: Boolean, 'default': false},
+    teamSubmissions: {type: Boolean, 'default': false},
     maxTeamMembers: {type: Number, 'default':null, min: 1},
     archived: [{type: Schema.Types.ObjectId, ref: 'user'}]
 }));
