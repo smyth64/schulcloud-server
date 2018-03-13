@@ -28,6 +28,7 @@ exports.after = {
   	const userIds = (Array.isArray(hook.params.query.userId)
 	  ? hook.params.query.userId
 	  : [hook.params.query.userId]);
+  	if (!hook.params.query.userId) return hook;
   	const toolIds = (Array.isArray(hook.params.query.toolId)
 	  ? hook.params.query.toolId
 	  : [hook.params.query.toolId]);
