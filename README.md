@@ -14,6 +14,10 @@ When running the server locally, it is served at [http://localhost:3030/docs/](h
 * node.js
 * mongoDB
 
+## Documentation
+
+[Confluence SCDOK](https://docs.schul-cloud.org/display/SCDOK)
+
 ## Setup
 
 There are blog posts on how to setup [client](https://github.com/schul-cloud/schulcloud-client) and [server](https://github.com/schul-cloud/schulcloud-server) under [Windows](https://schul-cloud.github.io/blog/2017-05-18/setup-schul-cloud-client-and-sever-under-windows) and [Linux](https://schul-cloud.github.io/blog/2017-04-21/setup-development-under-ubuntu).
@@ -57,6 +61,10 @@ There are blog posts on how to setup [client](https://github.com/schul-cloud/sch
 
 1. Go into project folder
 2. run `docker-compose up`
+
+## Setup in Windows Docker
+
+More under: [Confluence SCDOK: Setup](https://docs.schul-cloud.org/display/SCDOK/Setup)
 
 ## How to name your branch
 
