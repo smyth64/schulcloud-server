@@ -7,10 +7,6 @@
 	"updatedAt" : { "$date": "2017-01-01T00:06:37.148Z" },
 	"createdAt" : { "$date": "2017-01-01T00:06:37.148Z" },
 	"permissions": [
-		"BASE_VIEW",
-		"DASHBOARD_VIEW",
-		"TOOL_VIEW",
-		"HOMEWORK_CREATE",
 		"PASSWORD_EDIT",
 		"FOLDER_DELETE",
 		"FOLDER_CREATE",
@@ -37,10 +33,8 @@
 		"RELEASES_VIEW",
 		"ROLE_VIEW",
 		"USERGROUP_VIEW",
-		"COURSEGROUP_CREATE", 
+		"COURSEGROUP_CREATE",
 		"COURSEGROUP_EDIT",
-		"SYSTEM_VIEW",
-		"USER_VIEW",
 		"USER_EDIT",
 		"HOMEWORK_VIEW",
 		"HOMEWORK_EDIT",
@@ -54,7 +48,6 @@
 		"FILESTORAGE_VIEW",
 		"FILESTORAGE_EDIT",
 		"FILESTORAGE_CREATE",
-		"CONTENT_VIEW",
 		"CONTENT_NON_OER_VIEW",
 		"FILESTORAGE_REMOVE"
 	],
@@ -123,8 +116,6 @@
 		}
 	],
 	"permissions": [
-		"LESSONS_VIEW",
-		"TOOL_NEW_VIEW",
 		"COURSE_EDIT",
 		"STUDENT_CREATE",
 		"TEACHER_CREATE",
@@ -166,10 +157,7 @@
 	"createdAt" : { "$date": "2017-01-01T00:06:37.148Z" },
 	"roles": [],
 	"permissions": [
-		"BASE_VIEW",
-		"DASHBOARD_VIEW",
 		"TOOL_VIEW",
-		"CONTENT_VIEW",
 		"HOMEWORK_VIEW",
 		"NEWS_VIEW",
 		"CALENDAR_VIEW",
@@ -210,8 +198,7 @@
 		}
 	],
 	"permissions": [
-		"LESSONS_VIEW",
-		"TOOL_NEW_VIEW"
+		"TOOL_ADD_VIEW"
 	],
 	"__v": 0
 },
