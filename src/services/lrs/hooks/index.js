@@ -28,7 +28,7 @@ const checkVerb = context => {
 	return context;
 };
 
-const checkResult= context => {
+const checkResult = context => {
 	if(context.data.success && context.data.reachedScore && context.data.maxScore){
 		context.data.result = {
 			success: context.data.success,
@@ -37,6 +37,16 @@ const checkResult= context => {
 				max: context.data.maxScore
 			}
 		}
+	}
+	return context;
+};
+
+const checkParent = context => {
+	if(context.data.parentId){
+		context.data.parent =
+			{
+				id: context.data.parentId
+			};
 	}
 	return context;
 };
@@ -65,6 +75,7 @@ const createStatement = context => {
 		},
 		context: {
 			contextActivities: {
+				parent: context.data.parent,
 				grouping: {
 					id: context.data.courseId
 				}
@@ -79,7 +90,7 @@ exports.before = {
 	all: [auth.authenticate('jwt')],
 	find: [],
 	get: [],
-	create: [checkPseudonym, checkVerb, checkResult, createStatement],
+	create: [checkPseudonym, checkVerb, checkResult, checkParent, createStatement],
 	update: [],
 	patch: [],
 	remove: []
