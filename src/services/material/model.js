@@ -10,7 +10,8 @@ const Schema = mongoose.Schema;
 
 const worksheetSchema = new Schema({
   title: { type: String, required: true },
-  content: { type: Object, required: true }
+  content: { type: Object, required: true, default: [] },
+  page: { type: Object, required: true, default: { count: 1, active: 0} }
 }, {
 	timestamps: true
 });
