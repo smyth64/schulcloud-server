@@ -77,7 +77,7 @@ const filterValidUsers = context => {
 		}
 		validUserIds = validUserIds.map(element => element.toString())
 		context.result.data = context.result.data.filter(pseudonym =>
-			validUserIds.includes(pseudonym.userId._id.toString())
+			validUserIds.includes((pseudonym.userId._id ? pseudonym.userId._id : pseudonym.userId).toString())
 		);
 		return context
 	})
