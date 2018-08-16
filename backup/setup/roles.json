@@ -37,7 +37,7 @@
 		"RELEASES_VIEW",
 		"ROLE_VIEW",
 		"USERGROUP_VIEW",
-		"COURSEGROUP_CREATE", 
+		"COURSEGROUP_CREATE",
 		"COURSEGROUP_EDIT",
 		"SYSTEM_VIEW",
 		"USER_VIEW",
@@ -232,5 +232,21 @@
 		"HELPDESK_EDIT"
 	],
 	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "0000d186816abba584714d04"
+	},
+	"name": "betaTeacher",
+	"updatedAt": {
+		"$date": "2017-01-01T00:06:37.148+0000"
+	},
+	"createdAt": {
+		"$date": "2017-01-01T00:06:37.148+0000"
+	},
+	"roles": [{
+		"$oid": "0000d186816abba584714c98"
+	}],
+	"permissions": ["BETA_FEATURES"],
+	"__v": 0
 }]
-

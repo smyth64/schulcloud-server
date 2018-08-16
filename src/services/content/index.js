@@ -25,6 +25,53 @@ class ResourcesService {
 		});
 	}
 
+	create(data, params) {
+		const serviceUrls = this.app.get('services') || {};
+		const options = {
+			uri: serviceUrls.content + '/resources/',
+			method: 'POST',
+			body: {
+				title: data.title,
+				content: data.content,
+				topics: data.topics || [],
+				subjects: data.subjects || [],
+				goal: data.goal,
+				age: data.age,
+				ageRange: data.ageRange,
+				difficulty: data.difficulty,
+				description: data.description,
+				mimeType: "model",
+				licenses: ['CC BY-NC'],
+				contentCategory: 'proven-learning-object',
+				providerName: 'Schul-Cloud',
+				isPrivat: data.isPrivat,
+				userId: data.userId,
+			},
+			json: true,
+			timeout: REQUEST_TIMEOUT
+		};
+		return request(options).then(message => {
+			console.log("Created " + message.title);
+			return message;
+		});
+	}
+
+	patch(id, data, params) {
+		const serviceUrls = this.app.get('services') || {};
+		const options = {
+			uri: serviceUrls.content + '/resources/' + id,
+			method: 'PATCH',
+			body: data,
+			json: true,
+			timeout: REQUEST_TIMEOUT
+		};
+		return request(options).then(message => {
+			console.log("Updated " + message.title + "(new approval count: " + message.approvalCount + "; approved: " + message.approved + ")");
+			return message;
+		});
+	}
+
+
 	get(id) {
 		const serviceUrls = this.app.get('services') || {};
 		const options = {
@@ -49,6 +96,7 @@ class SearchService {
 
 	find(params) {
 		const serviceUrls = this.app.get('services') || {};
+
 		const options = {
 			uri: serviceUrls.content + '/search/',
 			qs: params.query,
@@ -117,6 +165,7 @@ module.exports = function () {
 	app.use('/content/search', new SearchService());
 	app.use('/content/redirect', new RedirectService(), RedirectService.redirect);
 	app.use('/materials', service(options));
+
 
 	// Get our initialize service to that we can bind hooks
 	const resourcesService = app.service('/content/resources');

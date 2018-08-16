@@ -22,8 +22,9 @@ const relatedResourceSchema = new Schema({
 const materialSchema = new Schema({
 	originId: { type: String },
 	title: { type: String, required: true},
-	client: { type: String, required: true},
-	url: { type: String, required: true},
+	client: { type: String},
+	url: { type: String}, // TODO: add relevant fields from content schema?
+	content: { type: String },
 	license: [{ type: String }],
 	description: { type: String },
 	contentType: { type: Number },
