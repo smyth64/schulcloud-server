@@ -221,7 +221,7 @@ const restrictToCurrentSchoolAndUser = globalHooks.ifNotLocal(hook => {
             return Promise.resolve(hook);
         } */
 
-        if (team !== undefined && (method !== 'create'|| method !== 'patch')) {
+        if (team !== undefined && (method !== 'create' && method !== 'patch')) {
             //test if asked school in team
             if(!Array.isArray(team)){
                 team=[team];
