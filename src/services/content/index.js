@@ -32,6 +32,7 @@ class ResourcesService {
 			method: 'POST',
 			body: {
 				title: data.title,
+				thumbnail: data.thumbnail,
 				content: data.content,
 				topics: data.topics || [],
 				subjects: data.subjects || [],
